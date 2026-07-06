@@ -79,8 +79,12 @@ if ($validQuoteFound) {
     }
 }
 
+$pokeId = Get-Random -Minimum 1 -Maximum 1026
+$pokeImageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/$pokeId.png"
+
 $dynamicData = @(
-    @{ type = 2; name = "progress"; value = $progressValue }
+    @{ type = 2; name = "progress"; value = $progressValue },
+    @{ type = 3; name = "pokemon_image"; value = @{ url = $pokeImageUrl } }
 )
 
 if ($boxes[0] -ne "") { $dynamicData += @{ type = 1; name = "quote_line_1"; value = $boxes[0] } }
@@ -96,6 +100,7 @@ $bodyObj = @{
 $jsonBody = $bodyObj | ConvertTo-Json -Depth 5 -Compress
 
 Write-Output "Sending Progress: $progressValue"
+Write-Output "Sending Pokemon ID: $pokeId"
 
 if ($validQuoteFound) {
     Write-Output "Line 1: $($boxes[0])"
