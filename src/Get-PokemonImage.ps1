@@ -1,6 +1,6 @@
 function Get-PokemonImage {
-    $pokeId = Get-Random -Minimum 1 -Maximum 1026
-    $pokeImageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/$pokeId.png"
+    $pokeId = Get-Random -Minimum 1 -Maximum 152
+    $pokeImageUrl = "https://raw.githubusercontent.com/sla-king/Discord-Widget/main/assets/$pokeId.png"
     return @{
         Id = $pokeId
         Url = $pokeImageUrl
